@@ -1,6 +1,6 @@
 <?php
 
-namespace jos;
+namespace Jos;
 
 class StoreDeleteStockInBill4SamRequest
 {

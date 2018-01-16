@@ -1,5 +1,5 @@
 <?php
-namespace jos;
+namespace Jos;
 class JdClient
 {
 	public $serverUrl = "https://api.jd.com/routerjson";
