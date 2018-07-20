@@ -4,7 +4,7 @@
 使用 Composer 安装:
 
 ```
-composer require flofire/jos-php-sdk
+composer require flofire/jos-sdk
 ```
 
 ## 使用
