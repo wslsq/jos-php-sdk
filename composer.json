@@ -1,5 +1,5 @@
 {
-    "name": "flofire/jos-php-sdk",
+    "name": "flofire/jos-sdk",
     "description": "京东php接口sdk",
     "license": "apache v2",
     "version": "2.0",
