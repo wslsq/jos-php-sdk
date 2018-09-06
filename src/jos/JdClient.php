@@ -162,7 +162,7 @@ class JdClient
 		//返回的HTTP文本不是标准JSON或者XML，记下错误日志
 		if (false === $respWellFormed)
 		{
-			$this->logCommunicationError($sysParams["method"],$requestUrl,"HTTP_RESPONSE_NOT_WELL_FORMED",$resp);
+			//$this->logCommunicationError($sysParams["method"],$requestUrl,"HTTP_RESPONSE_NOT_WELL_FORMED",$resp);
 			$result->code = 0;
 			$result->msg = "HTTP_RESPONSE_NOT_WELL_FORMED";
 			return $result;
@@ -183,34 +183,4 @@ class JdClient
 		return $respObject;
 	}
 
-	public function exec($paramsArray)
-	{
-		if (!isset($paramsArray["method"]))
-		{
-			trigger_error("No api name passed");
-		}
-		$inflector = new LtInflector;
-		$inflector->conf["separator"] = ".";
-		$requestClassName = ucfirst($inflector->camelize(substr($paramsArray["method"], 7))) . "Request";
-		if (!class_exists($requestClassName))
-		{
-			trigger_error("No such api: " . $paramsArray["method"]);
-		}
-
-		$session = isset($paramsArray["session"]) ? $paramsArray["session"] : null;
-
-		$req = new $requestClassName;
-		foreach($paramsArray as $paraKey => $paraValue)
-		{
-			$inflector->conf["separator"] = "_";
-			$setterMethodName = $inflector->camelize($paraKey);
-			$inflector->conf["separator"] = ".";
-			$setterMethodName = "set" . $inflector->camelize($setterMethodName);
-			if (method_exists($req, $setterMethodName))
-			{
-				$req->$setterMethodName($paraValue);
-			}
-		}
-		return $this->execute($req, $session);
-	}
 }
