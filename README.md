@@ -19,13 +19,10 @@ class JDSDK{
     }
     static public function execute($request, $token)
     {
-      if (self::$client == null){
-        $client = self::init();
-      }
       $client = new \Jos\JdClient();
       $client->appKey = '';
-	  	$client->appSecret = '';
-	  	$client->serverUrl = 'https://api.jd.com/routerjson';
+      $client->appSecret = '';
+      $client->serverUrl = 'https://api.jd.com/routerjson';
       $client->accessToken = $token;
       return $client->execute($request, $token);
     }
