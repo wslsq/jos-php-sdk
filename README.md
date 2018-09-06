@@ -8,7 +8,7 @@ composer require flofire/jos-sdk
 ```
 
 ## 使用
-###编写个类
+### 编写个类
 ```
 <?php
 class JDSDK{
@@ -31,7 +31,7 @@ class JDSDK{
 ```
 
 
-###调用示范
+### 调用示范
 ```
 <?php
 use JDSDK;
